@@ -150,7 +150,11 @@ Other auth modules are in the roadmap including, but not limited to, Firebase, A
 
 # Deployment
 
-Flo automatically Dockerizes any backend codebase it generates. In addition, if you provide a valid dockerhub registry with the '-registry' flag in the create command, it will give you a Kubernetes manifest file for pulling the back end API's image from your registry and deploying it to a cluster. If you have installed Docker and Kind on your development system, you can run the backend in a local cluster alongside a TiKV-equipped SurrealDB instance for data persistence. Roadmap includes modules for performing this implementation with multiple cloud providers' Kubernetes hosting services via Terraform and Github Actions, the prototype for which can be found [here](https://github.com/thecodekitchen/terraform-k8s-example).
+Flo automatically Dockerizes any backend codebase it generates. In addition, if you provide a valid dockerhub registry with the '-registry' flag in the create command, it will give you a Kubernetes manifest file for pulling the back end API's image from your registry and deploying it to a cluster. If you have installed Docker and Kind on your development system, you can run the backend in a local cluster alongside a TiKV-equipped SurrealDB instance for data persistence. This is automated in the form of the following command.
+```
+flo deploy -kind
+```
+The roadmap includes modules for performing this implementation with multiple cloud providers' Kubernetes hosting services via Terraform and Github Actions, the prototype for which can be found [here](https://github.com/thecodekitchen/terraform-k8s-example).
 
 # Objectives
 
