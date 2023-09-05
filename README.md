@@ -15,11 +15,13 @@ The architecture of a Flo application, whether or not Go is chosen as the backen
 * currently only Go, but Python should be coming soon. See [Flython](https://github.com/thecodekitchen/flython) for an idea of what this looks like with a Python-based CLI. I decided to move to Go for the main root CLI implementation of the integration pattern for all subsequent language models that need to be generated due to the modular nature of the architectures it enabled.
 
 # Model Synchronization
-Changes to the model schema should be made to a json file and applied with the 'flo sync' command like so:
+Changes to the model schema should be made to a json file called, by default, "models.json" and applied with the 'flo sync' command like so:
 
 ```
-flo sync test_models.json
+flo sync
 ```
+
+Add the filename of any alternative model files you might want to sync (for A/B testing or other purposes) as an extra argument.
 
 Rule 1:
 
