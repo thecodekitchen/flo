@@ -2,6 +2,10 @@
 
 A framework for writing full stack applications with Flutter and Go.
 
+# Installation
+
+For the moment, the best way to install is to build from source. Just clone the repo into a directory on your gopath, run 'go build .' from its root where the go.mod file is, and move the resulting binary into an executable directory like /usr/local/bin on Unix systems. This assumes that you have both Flutter and Go installed on your system already. In order to use the deployment features in full, you will also need to have Docker and Kind installed on your system. The instructions for those features assume a basic knowledge of those tools.
+
 # Alpha stage (active development)
 
 The architecture of a Flo application, whether or not Go is chosen as the backend language, will consist of three essential components:
