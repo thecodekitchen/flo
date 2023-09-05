@@ -4,7 +4,7 @@ A framework for writing full stack applications with Flutter and Go.
 
 # Installation
 
-For the moment, the best way to install is to build from source. Just clone the repo into a directory on your gopath, run 'go build .' from its root where the go.mod file is, and move the resulting binary into an executable directory like /usr/local/bin on Unix systems. This assumes that you have both Flutter and Go installed on your system already. In order to use the deployment features in full, you will also need to have Docker and Kind installed on your system. The instructions for those features assume a basic knowledge of those tools.
+For the moment, the best way to install is to build from source. Just clone the repo into a directory on your gopath, run 'go build .' from its root where the go.mod file is, and move the resulting binary into an executable directory like /usr/local/bin on Unix systems. This assumes that you have both Flutter and Go installed on your system already. In order to use the deployment features in full, you will also need to have Docker and Kind (for local Kubernetes deployments) installed on your system. The instructions for those features assume a basic knowledge of those tools.
 
 # Alpha stage (active development)
 
@@ -16,7 +16,7 @@ The architecture of a Flo application, whether or not Go is chosen as the backen
 
 3. A set of JSON models, the format for which is covered below.
 
-* currently only Go, but Python should be coming soon. See [Flython](https://github.com/thecodekitchen/flython) for an idea of what this looks like with a Python-based CLI. I decided to move to Go for the main root CLI implementation of the integration pattern for all subsequent language models that need to be generated due to the modular nature of the architectures it enabled.
+* currently only Go, but Python should be coming soon. See [Flython](https://github.com/thecodekitchen/flython) for an idea of what this looks like with a Python-based CLI. I decided to move to Go for the main root CLI implementation of the integration pattern for all subsequent language modules that need to be generated due to the modular nature of the architectures it enabled.
 
 # Model Synchronization
 Changes to the model schema should be made to a json file called, by default, "models.json" and applied with the 'flo sync' command like so:
@@ -36,7 +36,7 @@ or back end logic, that's fine. Just don't extend them from the BaseModel class 
 
 Those class extensions operate as indicators that the front and back end need to synchronize those classes in a shared schema.
 
-** To reiterate, any class that doesn't extend those base classes should be declared outside the models.py and models.dart files respectively.**
+**To reiterate, any class that doesn't extend those base classes should be declared outside the models.py and models.dart files respectively.**
 
 Don't worry, that was the most complicated rule.
 
@@ -166,4 +166,4 @@ Overall, the purpose of these frameworks is to encourage standardized integratio
 
 The models are generated as established native data structures in both the back and front end codebases simultaneously so that the data can be translated effectively between the two languages. I've chosen Flutter/Dart as the primary frontend technology for its versatility to reach multiple platforms in their native paradigms, which is in line with my core motivation to provide idiomatic translations of a core architecture for as many platforms and languages as possible.
 
-The future direction of development will likely be centered around understanding how the integration schemes employed in Flython and Flo, respectively, might work with the data structures available in other backend languages. A couple of promising targets on the horizon are Rust and Julia. More suggestions are extremely welcome. I'm excited to use this as a platform for expanding my knowledge base of backend languages.
+The future direction of development will likely be centered around understanding how the integration schemes employed in Flython and Flo, respectively, might work with the data structures available in other backend languages. A couple of promising targets on the horizon are Rust and Julia. More suggestions are extremely welcome. I'm excited to use this as a platform for expanding my knowledge of backend languages.
