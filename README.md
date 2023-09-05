@@ -109,11 +109,9 @@ flo will automatically interpret this as an array (list) of 'Document' objects. 
 
 Rule 5:
 
-Models need to be referenced AFTER they are declared. The reason that 'Document' came first in the above example is because the 'User' model references 'Document' in one of its attributes. This is mainly to appease the Python side of flo, but I like it as a general rule because it gets you in the habit of only referencing what you've already defined. Wishful thinking in the opposite direction, in my experience, often leads to referencing things I forgot to build.
+Models need to be referenced AFTER they are declared. The reason that 'Document' came first in the above example is because the 'User' model references 'Document' in one of its attributes. Only some languages require this, but it is applied as a general rule in order to ensure maximum compatibility.
 
-That's all the rules to the model synchronization game! Go have fun!
-
-# New Rule!
+Rule 6:
 
 I know five was a nice round number, but I decided things would go a lot smoother if I added class extensions. Now we can say
 ```
@@ -152,7 +150,7 @@ Other auth modules are in the roadmap including, but not limited to, Firebase, A
 
 # Deployment
 
-Flo automatically Dockerizes any backend codebase it generates. In addition, if you provide  a valid dockerhub registry with the '-registry' flag in the create command, it will give you a Kubernetes manifest file for pulling the back end API's image from your registry and deploying it to a cluster. If you have installed Docker and Kind on your development system, you can run the backend in a local cluster alongside a TiKV-equipped SurrealDB instance for data persistence. Roadmap includes modules for performing this implementation with multiple cloud providers' Kubernetes hosting services via Terraform and Github Actions, the prototype for which can be found [here](https://github.com/thecodekitchen/terraform-k8s-example).
+Flo automatically Dockerizes any backend codebase it generates. In addition, if you provide a valid dockerhub registry with the '-registry' flag in the create command, it will give you a Kubernetes manifest file for pulling the back end API's image from your registry and deploying it to a cluster. If you have installed Docker and Kind on your development system, you can run the backend in a local cluster alongside a TiKV-equipped SurrealDB instance for data persistence. Roadmap includes modules for performing this implementation with multiple cloud providers' Kubernetes hosting services via Terraform and Github Actions, the prototype for which can be found [here](https://github.com/thecodekitchen/terraform-k8s-example).
 
 # Objectives
 
