@@ -140,6 +140,8 @@ and the FloUser class will be an extension of the User class containing one extr
 
 # Supabase Authentication
 
+DISCLAIMER: The generated example architecture is not fully secure in all respects. It is designed to demonstrate the base features of an authentication service, not fully implement them for production use. For example, it's far too easy in the generated configuration for any user to create an admin account. I just created useful handles for extending authorization protocols when an admin property exists on a user token. Always establish authentication and authorization protocols appropriate to your use case.
+
 For now, the Supabase Auth modules are baked into the core of the framework, but the backend middleware is turned off initially so that test calls (from external sources such as Postman or curl commands) can go through smoothly to your backend. Currently, in order to effectively login to the example app, you need to create a free Supabase project and enter its anon key and project url into the generated .env files in your front and back end directories (there is one in each of them!). The project name specified in your create command is used by default as the redirect url scheme, so you will also need to go to Auth/Url Configuration on the Supabase console and add 
 ```
 <your-project-name>://home
@@ -148,7 +150,7 @@ to the list of allowed redirect urls.
 
 Only then will the login functionality work on both mobile and web. Windows and Linux integrations are still in development.
 
-The beta version will involve a base implementation with no auth baked in with the current implementation available through an optional flag, but it will require some refactoring. My goal was to build the more complicated case first and strip it down for the base implementation.
+The beta version will involve a base implementation with no auth baked in, and the current implementation available through an optional flag, but it will require some refactoring. My goal was to build the more complicated case first and strip it down for the base implementation.
 
 Other auth modules are in the roadmap including, but not limited to, Firebase, Auth0, and FusionAuth.
 
