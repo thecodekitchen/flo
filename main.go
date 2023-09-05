@@ -17,7 +17,7 @@ func main() {
 	lang := ""
 	flag.StringVar(&lang, "lang", "go", "The language for your backend")
 	flag.BoolVar(&kind, "kind", false, "set this flag in order to run the backend from a local kubernetes cluster via port-forwarding.")
-	flag.StringVar(&registry, "registry", "codekitchenxyz",
+	flag.StringVar(&registry, "registry", "",
 		`The name of your container registry that Kubernetes can pull from.
 Required in order to run 'flo deploy' in your project.
 To configure this later, run 'flo register <registry_name>'.
@@ -44,12 +44,13 @@ Creating ` + project + ` back end ...`)
 			os.Chdir(project)
 
 			cmd.GenerateBackendApi(project, lang)
-			if registry == "codekitchenxyz" {
-				fmt.Println("No registry specified. Defaulting to 'codekitchenxyz'.")
+			if registry == "" {
+				fmt.Println("No artifact registry specified. Will not generate Kubernetes manifest.")
+				fmt.Println("To generate deployment configuration with an artifact registry later, run 'flo register <new_registry_name>' from the project root.")
+			} else {
+				fmt.Println("Creating deployment configuration for artifact registry ", registry)
+				cmd.GenerateDeploymentConfig(project, registry)
 			}
-			fmt.Println("Creating deployment configuration for registry ", registry)
-			fmt.Println("To regenerate with a different registry later, run 'flo register <new_register_name>' from the project root.")
-			cmd.GenerateDeploymentConfig(project, registry)
 
 			fmt.Printf(`Creating ` + project + ` front end ...`)
 			cmd.GenerateFlutterApp(project)
