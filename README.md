@@ -6,7 +6,7 @@ A framework for writing full stack applications with Flutter and Go.
 
 For the moment, the best way to install is to build from source. Just clone the repo into a directory on your gopath, run 'go build .' from its root where the go.mod file is, and move the resulting binary into an executable directory like /usr/local/bin on Unix systems. This assumes that you have both Flutter and Go installed on your system already. In order to use the deployment features in full, you will also need to have Docker and Kind (for local Kubernetes deployments) installed on your system. The instructions for those features assume a basic knowledge of those tools.
 
-# Alpha stage (active development)
+# Alpha stage
 
 The architecture of a Flo application, whether or not Go is chosen as the backend language, will consist of three essential components:
 
@@ -16,7 +16,7 @@ The architecture of a Flo application, whether or not Go is chosen as the backen
 
 3. A set of JSON models, the format for which is covered below.
 
-* currently only Go, but Python should be coming soon. See [Flython](https://github.com/thecodekitchen/flython) for an idea of what this looks like with a Python-based CLI. I decided to move to Go for the main root CLI implementation of the integration pattern for all subsequent language modules that need to be generated due to the modular nature of the architectures it enabled.
+
 
 # Model Synchronization
 Changes to the model schema should be made to a json file called, by default, "models.json" and applied with the 'flo sync' command like so:
